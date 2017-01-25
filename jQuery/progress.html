@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="myplugin.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/PluginDemo.css">
+<script>
+$(document).ready(function(){
+	var count=0;var status={firstname:0,lasttname:0,sex:0,email:0,state:0,city:0,Address:0,pincode:0,mobile:0,cource:0};
+	function validateEmail($email) {
+                var pattern = new RegExp(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/);
+                return pattern.test($email);
+                };
+                function validateMobile($mobile) {
+				 var pattern = new RegExp(/^[0-9]{5,10}$/i);
+                return pattern.test( $mobile );
+                };
+                function validatePincode($pin) {
+				 var pattern = new RegExp(/^[0-9]{3,8}$/i);
+                return pattern.test( $pin );
+                };
+    
+    $("#firstname").focusout(function(){
+    	if($("#firstname").val()==""){
+    		if(status.firstname==1){
+    			count=count-1;
+    			status.firstname=0;
+    		}
+    	}
+    	else{
+    		if(status.firstname==0){
+    			count=count+1;
+    			status.firstname=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#lasttname").focusout(function(){
+    	if($("#lasttname").val()==""){
+    		if(status.lasttname==1){
+    			count=count-1;
+    			status.lasttname=0;
+    		}
+    	}
+    	else{
+    		if(status.lasttname==0){
+    			count=count+1;
+    			status.lasttname=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#email").focusout(function(){var valid=1
+    	if(!validateEmail($("#email").val())){
+                	$("#message").html("Enter a valid Email Address");
+                	$("#popup").dialog();
+                    valid=0;
+                }
+    	if(valid==0){
+    		if(status.email==1){
+    			count=count-1;
+    			status.email=0;
+    		}
+    	}
+    	else{
+    		if(status.email==0){
+    			count=count+1;
+    			status.email=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#state").focusout(function(){
+    	if($("#state").val()==""){
+    		if(status.state==1){
+    			count=count-1;
+    			status.state=0;
+    		}
+    	}
+    	else{
+    		if(status.state==0){
+    			count=count+1;
+    			status.state=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#city").focusout(function(){
+    	if($("#city").val()==""){
+    		if(status.city==1){
+    			count=count-1;
+    			status.city=0;
+    		}
+    	}
+    	else{
+    		if(status.city==0){
+    			count=count+1;
+    			status.city=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#Address").focusout(function(){
+    	if($("#Address").val()==""){
+    		if(status.Address==1){
+    			count=count-1;
+    			status.Address=0;
+    		}
+    	}
+    	else{
+    		if(status.Address==0){
+    			count=count+1;
+    			status.Address=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#mobile").focusout(function(){var valid=1
+    	if(!validateMobile($("#mobile").val())){
+    		$("#message").html("Enter a valid Mobile Number");
+                	$("#popup").dialog();
+                	
+                    valid=0;
+                }
+    	if(valid==0){
+    		if(status.mobile==1){
+    			count=count-1;
+    			status.mobile=0;
+    		}
+    	}
+    	else{
+    		if(status.mobile==0){
+    			count=count+1;
+    			status.mobile=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#pincode").focusout(function(){var valid=1
+    	if(!validatePincode($("#pincode").val())){
+                	$("#message").html("Enter a valid pincode");
+                	$("#popup").dialog();
+                    valid=0;
+                }
+    	if(valid==0){
+    		if(status.pincode==1){
+    			count=count-1;
+    			status.pincode=0;
+    		}
+    	}
+    	else{
+    		if(status.pincode==0){
+    			count=count+1;
+    			status.pincode=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $("#cource").focusout(function(){
+    	if($("#cource").val()==""){
+    		if(status.cource==1){
+    			count=count-1;
+    			status.cource=0;
+    		}
+    	}
+    	else{
+    		if(status.cource==0){
+    			count=count+1;
+    			status.cource=1;
+    		}
+    	}
+    	
+    	$("progress").attr("value",count);
+});
+    $(".sex").click(function(){
+    	
+    	
+    	
+    		if(status.sex==0){
+    			count=count+1;
+    			status.sex=1;
+    		}
+    	
+    	
+    	$("progress").attr("value",count);
+});
+    $("#submit").click(function(){
+    	if(count==10){
+    		$("#message").html("Congratulation your form is successfully submitted");
+                	$("#popup").dialog();
+    		
+    	}
+    	else{
+    		$("#message").html("your form is"+(count*10)+"% completed \n please complete it");
+                	$("#popup").dialog();
+    		
+    	}
+
+});});
+</script>
+</head>
+<body>
+FirstName:
+<input type="text" id="firstname"><br>
+LastName:
+<input type="text" id="lasttname"><br>
+Sex:<br/>Male-
+ 	     <input type="radio" name="sex" value="male" class="sex" >female-
+ 	     <input type="radio" name="sex" value="female"  class="sex"><br>
+ 	     Email:
+ 	     <input type="Email" id="email" ><br>
+ 	     State:
+ 	     <input type="text" id="state"><br>
+ 	     City:
+ 	     <input type="text" id="city"><br>
+ 	     Address:
+ 		 <textarea name="Address" form="usrform" rows="3" id="Address"></textarea><br>
+ 		 Pincode:
+ 		 <input type="text" id="pincode">
+ 		 Mobile:
+ 		 <input type="text" id="mobile">
+ 		 Cource:
+ 		 <input type="text" id="cource">
+
+<progress value="0" max="10"></progress><br/>
+<button type="button" id="submit">submit</button>
+<div id="popup"style="display: none;">
+    <div id="cross">&#x274C;</div>
+    <div id="message"></div>
+    </div>
+
+
+</body>
+</html>
